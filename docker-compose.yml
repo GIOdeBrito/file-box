@@ -1,0 +1,16 @@
+services:
+    app:
+        container_name: file-box-app
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./storage:/var/www/html/storage
+            - ./src:/var/www/html/src
+            - ./vendor:/var/www/html/vendor
+            - ./public:/var/www/html/public
+            - ./.htaccess:/var/www/html/.htaccess
+            - ./index.php:/var/www/html/index.php
+        ports:
+            - "3000:80"
+        tty: true

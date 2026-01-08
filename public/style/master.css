@@ -1,0 +1,62 @@
+
+:root {
+	--color-foreground: #222;
+	--color-background: #e3e3e3;
+}
+
+html, body {
+	margin: 0;
+}
+
+html {
+	background-image: radial-gradient(black 1px, transparent 0);
+	background-size: 10px 10px;
+	height: 100%;
+	background-color: var(--color-background);
+	margin: 0;
+}
+
+* {
+	font-family: sans-serif;
+}
+
+nav {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+}
+
+nav > div.left-area {
+	display: flex;
+	gap: 1rem;
+}
+
+nav img {
+	height: 16px;
+}
+
+main {
+	margin: 1rem;
+}
+
+h1, p, a {
+	color: var(--color-foreground);
+}
+
+p {
+	padding: 0;
+	margin: 0;
+}
+
+li::marker {
+	color: var(--color-foreground);
+}
+
+.box {
+	border-style: outset;
+	border-color: #000;
+	background-color: var(--color-background);
+	padding: 1rem 1rem;
+}
+
+
