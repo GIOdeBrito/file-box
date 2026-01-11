@@ -1,7 +1,9 @@
 <?php
 
-use GioPHP\Attributes\Route;
-use GioPHP\Http\Response;
+namespace FileBox\Controllers;
+
+use Pabilsag\Attributes\Route;
+use Pabilsag\Http\Response;
 
 class ApiController
 {
@@ -12,7 +14,7 @@ class ApiController
 	)]
 	public function serveFile ($req, $res): Response
 	{
-		$basePath = ABSPATH."/storage";
+		$basePath = ABSPATH."/storage/public";
 
 		$fileName = $req->getForm()->filename;
 

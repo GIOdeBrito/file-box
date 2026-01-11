@@ -1,10 +1,17 @@
 <?php
 
-use GioPHP\Attributes\Route;
-use GioPHP\Http\Response;
+namespace FileBox\Controllers;
 
-class Home
+use Pabilsag\Attributes\Route;
+use Pabilsag\Http\Response;
+use Pabilsag\Database\Database;
+
+class HomeController
 {
+	public function __construct (
+		public Database $db
+	) {}
+
 	#[Route(
 		method: 'GET',
 		path: '/',
@@ -26,7 +33,7 @@ class Home
 	)]
 	public function contentList ($req, $res): Response
 	{
-		$folderItems = glob(ABSPATH.'/storage/*');
+		$folderItems = glob(ABSPATH.'/storage/public/*');
 		$fileStructItemsCollection = [];
 
 		foreach($folderItems as $item):
@@ -55,6 +62,33 @@ class Home
 		];
 
 		return $res->status(200)->render('StorageList', 'main', $viewData);
+	}
+
+	#[Route(
+		method: 'GET',
+		path: '/monologue',
+		description: 'Comments page'
+	)]
+	public function monologuesPage ($req, $res): Response
+	{
+		$database = $this->db;
+
+		$database->connect('sqlite_db');
+		$result = $database->query("
+			SELECT
+				*
+			FROM
+				comments A
+			JOIN
+				users B ON B.id = A.user_id
+		");
+
+		$viewData = [
+			'title' => 'Monologue',
+			'collection' => $result
+		];
+
+		return $res->status(200)->render('Monologue', 'main', $viewData);
 	}
 
 	#[Route(

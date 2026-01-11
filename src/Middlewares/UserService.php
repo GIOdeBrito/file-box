@@ -1,6 +1,8 @@
 <?php
 
-use GioPHP\Interfaces\MiddlewareInterface;
+namespace FileBox\Middlewares;
+
+use Pabilsag\Interfaces\MiddlewareInterface;
 
 class UserService implements MiddlewareInterface
 {

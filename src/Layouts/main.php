@@ -1,6 +1,6 @@
 <?php
 
-/* GioPHP Layout */
+/* Pabilsag Layout */
 
 ?>
 <!DOCTYPE html>

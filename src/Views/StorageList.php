@@ -9,7 +9,6 @@
 
 		// List each file as a link
 		foreach($list as $item):
-
 			?>
 
 			<li>

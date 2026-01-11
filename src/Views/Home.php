@@ -12,7 +12,7 @@
 		</li>
 
 		<li>
-			<a href="#">Monologue</a>
+			<a href="/monologue">Monologue</a>
 		</li>
 
 		<li>
