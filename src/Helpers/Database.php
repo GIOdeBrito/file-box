@@ -16,7 +16,7 @@ function create_database_if_not_exists (): void
 	// Load database initiation script
 	$initQuery = file_get_contents(ABSPATH.'/storage/queries/database_init.sql');
 
-	$querySteps = array_filter(explode(';', $initQuery));
+	$querySteps = array_map(fn($x) => trim($x), array_filter(explode(';', $initQuery)));
 
 	foreach($querySteps as $query)
 	{

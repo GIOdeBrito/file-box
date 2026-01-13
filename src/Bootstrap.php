@@ -1,7 +1,7 @@
 <?php
 
 use FileBox\Controllers\{ HomeController, ApiController };
-use FileBox\Middlewares\{ UserService };
+use FileBox\Middlewares\{ UserService, LoginMiddleware };
 
 use function FileBox\Helpers\Database\create_database_if_not_exists;
 
@@ -23,5 +23,6 @@ $app->router()->addController(HomeController::class);
 $app->router()->addController(ApiController::class);
 
 $app->middleware()->add(UserService::class);
+$app->middleware()->add(LoginMiddleware::class);
 
 ?>
