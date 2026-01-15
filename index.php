@@ -8,6 +8,7 @@ session_start();
 require ABSPATH.'/vendor/pabilsag/Core/Autoloader.php';
 require ABSPATH.'/src/Autoloader.php';
 require ABSPATH.'/src/Helpers/Database.php';
+require ABSPATH.'/src/Helpers/Disk.php';
 
 use Pabilsag\Core\Application;
 

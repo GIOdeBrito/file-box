@@ -1,9 +1,13 @@
 services:
     app:
         container_name: file-box-app
+        env_file: .env
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.dev
+            args:
+                - PHP_UID=${PHP_UID}
+                - PHP_GID=${PHP_GID}
         volumes:
             - ./storage:/var/www/html/storage
             - ./src:/var/www/html/src
@@ -12,5 +16,21 @@ services:
             - ./.htaccess:/var/www/html/.htaccess
             - ./index.php:/var/www/html/index.php
         ports:
-            - "3000:80"
+            - "${PORT}:80"
         tty: true
+        profiles: [ "dev" ]
+        
+    app-prod:
+        container_name: file-box-app-production
+        env_file: .env
+        build:
+            context: .
+            dockerfile: Dockerfile.prod
+            args:
+                - PHP_UID=${PHP_UID}
+                - PHP_GID=${PHP_GID}
+        volumes:
+            - ./storage:/var/www/html/storage
+        ports:
+            - "${PORT}:80"
+        profiles: [ "prod" ]

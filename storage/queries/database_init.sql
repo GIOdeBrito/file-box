@@ -20,5 +20,5 @@ CREATE TABLE comments (
 );
 
 
-INSERT INTO comments (content, user_id, created_at) VALUES ('first comment, wooo', 1, datetime('now'));
+INSERT INTO comments (content, user_id, created_at) VALUES ('Know O Prince, that between the years when the Oceans drank Atlantis...', 1, datetime('now'));
 

@@ -1,20 +1,21 @@
-# Use the official PHP 8.1 image with Apache
+# Use the official PHP 8.3 image with Apache
 FROM php:8.3-apache
 
 WORKDIR /var/www/html
 
-USER root
+ARG PORT
+ARG PHP_UID
+ARG PHP_GID
 
-ENV PHP_UID=1000
-ENV PHP_GID=1000
+USER root
 
 # Enables the rewrite module for .htaccess
 RUN a2enmod rewrite
 
-# Expose port 80
-EXPOSE 80
-
 RUN groupadd -g $PHP_GID www
 RUN useradd www -u $PHP_UID -g $PHP_GID -m -s /sbin/nologin
+
+# Expose port 80
+EXPOSE 80
 
 USER www

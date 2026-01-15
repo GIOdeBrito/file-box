@@ -1,0 +1,28 @@
+# Use the official PHP 8.3 image with Apache
+FROM php:8.3-apache
+
+WORKDIR /var/www/html
+
+ARG PORT
+ARG PHP_UID
+ARG PHP_GID
+
+USER root
+
+# Copy source
+COPY public/ ./public
+COPY src/ ./src
+COPY vendor/ ./vendor
+COPY index.php .
+COPY .htaccess .
+
+# Enables the rewrite module for .htaccess
+RUN a2enmod rewrite
+
+RUN groupadd -g $PHP_GID www
+RUN useradd www -u $PHP_UID -g $PHP_GID -m -s /sbin/nologin
+
+# Expose port 80
+EXPOSE 80
+
+USER www
