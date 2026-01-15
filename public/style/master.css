@@ -9,7 +9,7 @@ html, body {
 }
 
 html {
-	background-image: radial-gradient(black 1px, transparent 0);
+	background-image: radial-gradient(#000 1px, transparent 0);
 	background-size: 10px 10px;
 	height: 100%;
 	background-color: var(--color-background);

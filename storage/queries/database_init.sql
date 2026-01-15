@@ -10,6 +10,7 @@ CREATE TABLE users (
 
 INSERT INTO users (name, secret, isadmin) VALUES ('admin', 'admin', 1);
 
+--- SELECT * FROM users;
 
 CREATE TABLE comments (
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -20,5 +21,14 @@ CREATE TABLE comments (
 );
 
 
-INSERT INTO comments (content, user_id, created_at) VALUES ('Know O Prince, that between the years when the Oceans drank Atlantis...', 1, datetime('now'));
+INSERT INTO
+	comments (content, user_id, created_at)
+VALUES (
+	'KNOW, oh prince, that between the years when the oceans drank Atlantis and
+	the gleaming cities, and the years of the rise of the Sons of Aryas, there
+	was an Age undreamed of, when shining kingdoms lay spread across the world
+	like blue mantles beneath the stars...',
+	1,
+	datetime('now')
+);
 
