@@ -2,6 +2,8 @@
 
 namespace FileBox\Helpers\Database;
 
+use function FileBox\Helpers\SQL\{ sql_get_script_as_array };
+
 function create_database_if_not_exists (): void
 {
 	$databasePath = ABSPATH.'/storage/database.sqlite';
@@ -13,10 +15,7 @@ function create_database_if_not_exists (): void
 
 	$database = new \SQLite3($databasePath);
 
-	// Load database initiation script
-	$initQuery = file_get_contents(ABSPATH.'/storage/queries/database_init.sql');
-
-	$querySteps = array_map(fn($x) => trim($x), array_filter(explode(';', $initQuery)));
+	$querySteps = sql_get_script_as_array('database_init');
 
 	foreach($querySteps as $query)
 	{

@@ -10,7 +10,9 @@ CREATE TABLE users (
 
 INSERT INTO users (name, secret, isadmin) VALUES ('admin', 'admin', 1);
 
+
 --- SELECT * FROM users;
+
 
 CREATE TABLE comments (
   id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,

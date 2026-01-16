@@ -59,4 +59,27 @@ li::marker {
 	padding: 1rem 1rem;
 }
 
+.form-input {
+	outline: none;
+	padding: .25rem;
+	border-style: outset;
+	border-color: var(--color-foreground);
+	background-color: #0000;
+	display: block;
+	margin: 0 0 .5rem 0;
+	width: 50%;
+}
 
+.text-block {
+	outline: none;
+	border-style: outset;
+	border-color: var(--color-foreground);
+}
+
+.button-main {
+	border-style: outset;
+	padding: .25rem 1rem;
+	border-color: var(--color-foreground);
+	background-color: var(--color-background);
+	cursor: pointer;
+}

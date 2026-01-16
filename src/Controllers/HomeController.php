@@ -5,6 +5,9 @@ namespace FileBox\Controllers;
 use Pabilsag\Attributes\Route;
 use Pabilsag\Http\Response;
 use Pabilsag\Database\Database;
+use FileBox\Middlewares\LoginMiddleware;
+
+use function FileBox\Helpers\SQL\sql_get_contents;
 
 class HomeController
 {
@@ -74,14 +77,9 @@ class HomeController
 		$database = $this->db;
 
 		$database->connect('sqlite_db');
-		$result = $database->query("
-			SELECT
-				*
-			FROM
-				comments A
-			JOIN
-				users B ON B.id = A.user_id
-		");
+		$result = $database->query(
+			sql_get_contents('select_all_comments')
+		);
 
 		$viewData = [
 			'title' => 'Monologue',
