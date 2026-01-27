@@ -16,11 +16,7 @@
 		</li>
 
 		<li>
-			<a href="#">Category</a>
-		</li>
-
-		<li>
-			<a href="#">Put</a>
+			<a href="/put">Put</a>
 		</li>
 	</ul>
 </main>

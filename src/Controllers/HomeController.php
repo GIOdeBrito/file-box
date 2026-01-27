@@ -18,7 +18,6 @@ class HomeController
 	#[Route(
 		method: 'GET',
 		path: '/',
-		description: 'Home page'
 	)]
 	public function index ($req, $res): Response
 	{
@@ -32,7 +31,6 @@ class HomeController
 	#[Route(
 		method: 'GET',
 		path: '/contents',
-		description: 'Storage content list page'
 	)]
 	public function contentList ($req, $res): Response
 	{
@@ -70,7 +68,6 @@ class HomeController
 	#[Route(
 		method: 'GET',
 		path: '/monologue',
-		description: 'Comments page'
 	)]
 	public function monologuesPage ($req, $res): Response
 	{
@@ -91,8 +88,16 @@ class HomeController
 
 	#[Route(
 		method: 'GET',
+		path: '/put',
+	)]
+	public function putPage ($req, $res): Response
+	{
+		return $res->status(200)->render('Put', 'main', []);
+	}
+
+	#[Route(
+		method: 'GET',
 		path: '/404',
-		description: 'Error page',
 		isFallbackRoute: true
 	)]
 	public function errorPage ($req, $res): Response
