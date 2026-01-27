@@ -6,8 +6,12 @@
 
 <script src="/public/src/put_page.js" type="module"></script>
 
+<?php require ABSPATH.'/src/Partials/nav.php' ?>
+
 <main class="box">
 	<h1>Put</h1>
+
+	<p data-name="json-message"></p>
 
 	<form class="" action="index.html" method="post">
 		<input type="file" data-name="file-input">

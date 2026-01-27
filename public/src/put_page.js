@@ -30,6 +30,10 @@ function setControls ()
 
 		uploader.onload((ev) =>
 		{
+			const json = JSON.parse(ev.target.response);
+
+			document.querySelector('[data-name="json-message"]').innerText = json.message;
+
 			bsubmit.disabled = false;
 			fileInput.value = "";
 		});

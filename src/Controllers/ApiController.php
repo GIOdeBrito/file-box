@@ -36,7 +36,7 @@ class ApiController
 		$ext = $fullNamePath[1];
 		$tempPath = $uploadedFile['tmp_name'];
 
-		if(!move_uploaded_file("{$tempPath}", "{$storagePath}/{$name}"))
+		if(!move_uploaded_file("{$tempPath}", "{$storagePath}/{$name}.{$ext}"))
 		{
 			return $res->status(500)->json([
 				'message' => 'An internal error ocurred',
@@ -45,7 +45,7 @@ class ApiController
 		}
 
 		return $res->status(200)->json([
-			'message' => "File was successfully uploaded to the storage",
+			'message' => "File {$name}.{$ext} was successfully uploaded to the storage",
 			'error' => false
 		]);
 	}
