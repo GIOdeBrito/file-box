@@ -1,5 +1,9 @@
 <IfModule mod_rewrite.c>
 
+	# Necessary to allow up to 1GB upload
+	php_value upload_max_filesize 1G
+	php_value post_max_size 1G
+
 	# Redirects all request to index.php
 	RewriteEngine on
 

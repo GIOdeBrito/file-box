@@ -92,7 +92,11 @@ class HomeController
 	)]
 	public function putPage ($req, $res): Response
 	{
-		return $res->status(200)->render('Put', 'main', []);
+		$viewData = [
+			'title' => 'Put'
+		];
+
+		return $res->status(200)->render('Put', 'main', $viewData);
 	}
 
 	#[Route(

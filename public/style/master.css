@@ -60,14 +60,12 @@ li::marker {
 }
 
 .form-input {
-	outline: none;
+	border-style: ridge;
 	padding: .25rem;
-	border-style: outset;
-	border-color: var(--color-foreground);
-	background-color: #0000;
-	display: block;
-	margin: 0 0 .5rem 0;
-	width: 50%;
+	min-width: 200px;
+	outline: none;
+	border-radius: 4px;
+	background: none;
 }
 
 .text-block {
@@ -76,10 +74,9 @@ li::marker {
 	border-color: var(--color-foreground);
 }
 
-.button-main {
-	border-style: outset;
-	padding: .25rem 1rem;
-	border-color: var(--color-foreground);
-	background-color: var(--color-background);
+.b-main {
+	border-style: ridge;
+	padding: .25rem .65rem;
 	cursor: pointer;
+	border-radius: 4px;
 }

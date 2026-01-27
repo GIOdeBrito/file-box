@@ -26,22 +26,22 @@ class FileUploader
 
 	onprogress (func)
 	{
-		ajax.upload.addEventListener('progress', func, false);
+		this.#ajax.upload.addEventListener('progress', func, false);
 	}
 
 	onabort (func)
 	{
-		ajax.addEventListener('abort', func, false);
+		this.#ajax.addEventListener('abort', func, false);
 	}
 
 	onerror (func)
 	{
-		ajax.addEventListener('error', func, false);
+		this.#ajax.addEventListener('error', func, false);
 	}
 
 	onload (func)
 	{
-		ajax.addEventListener('load', func, false);
+		this.#ajax.addEventListener('load', func, false);
 	}
 
 	send ()

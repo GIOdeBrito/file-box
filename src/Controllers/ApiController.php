@@ -26,9 +26,28 @@ class ApiController
 	)]
 	public function uploadFile ($req, $res): Response
 	{
-		// TODO: Increase file max size in php.ini
+		$storagePath = ABSPATH.'/storage/public';
 
-		return $res->status(200)->json($_FILES);
+		$uploadedFile = $_FILES['attachment'];
+
+		$fullNamePath = explode('.', $uploadedFile['name']);
+
+		$name = $fullNamePath[0];
+		$ext = $fullNamePath[1];
+		$tempPath = $uploadedFile['tmp_name'];
+
+		if(!move_uploaded_file("{$tempPath}", "{$storagePath}/{$name}"))
+		{
+			return $res->status(500)->json([
+				'message' => 'An internal error ocurred',
+				'error' => true
+			]);
+		}
+
+		return $res->status(200)->json([
+			'message' => "File was successfully uploaded to the storage",
+			'error' => false
+		]);
 	}
 }
 
