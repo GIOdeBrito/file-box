@@ -2,6 +2,7 @@
 
 use FileBox\Controllers\{ HomeController, ApiController, LoginController };
 use FileBox\Middlewares\{ UserService };
+use FileBox\DAO\MonologueDAO;
 
 use function FileBox\Helpers\Database\create_database_if_not_exists;
 use function FileBox\Helpers\Disk\create_folder_if_not_exists;
@@ -27,4 +28,7 @@ $app->router()->addController(LoginController::class);
 
 $app->middleware()->add(UserService::class);
 
-?>
+$app->container()->bind(MonologueDAO::class, fn($container) => new MonologueDAO(
+	$container->make(Pabilsag\Database\Database::class)
+));
+

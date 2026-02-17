@@ -6,13 +6,12 @@ use Pabilsag\Attributes\Route;
 use Pabilsag\Http\Response;
 use Pabilsag\Database\Database;
 use FileBox\Middlewares\LoginMiddleware;
-
-use function FileBox\Helpers\SQL\sql_get_contents;
+use FileBox\DAO\MonologueDAO;
 
 class HomeController
 {
 	public function __construct (
-		public Database $db
+		private MonologueDAO $monologueDao
 	) {}
 
 	#[Route(
@@ -21,11 +20,9 @@ class HomeController
 	)]
 	public function index ($req, $res): Response
 	{
-		$viewData = [
+		return $res->status(200)->render('Home', 'main', [
 			'title' => 'Home'
-		];
-
-		return $res->status(200)->render('Home', 'main', $viewData);
+		]);
 	}
 
 	#[Route(
@@ -71,16 +68,9 @@ class HomeController
 	)]
 	public function monologuesPage ($req, $res): Response
 	{
-		$database = $this->db;
-
-		$database->connect('sqlite_db');
-		$result = $database->query(
-			sql_get_contents('select_all_comments')
-		);
-
 		$viewData = [
 			'title' => 'Monologue',
-			'collection' => $result
+			'collection' => $this->monologueDao->getAllComments()
 		];
 
 		return $res->status(200)->render('Monologue', 'main', $viewData);
@@ -114,4 +104,3 @@ class HomeController
 	}
 }
 
-?>
