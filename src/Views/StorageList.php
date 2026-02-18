@@ -43,36 +43,3 @@
 		?>
 	</ul>
 </main>
-
-<style>
-
-	ul {
-	    list-style-type: none;
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		gap: 1rem;
-		margin: 0;
-		padding: 0;
-	}
-
-	ul > li {
-		width: 200px;
-	}
-
-	ul form {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		cursor: pointer;
-	}
-
-	.b-fake-list-item {
-		border: none;
-		background-color: #0000;
-		color: var(--color-foreground);
-		font-size: 16px;
-		cursor: pointer;
-	}
-
-</style>

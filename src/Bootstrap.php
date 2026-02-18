@@ -14,8 +14,8 @@ $app->loader()->setViewDirectory(ABSPATH.'/src/Views');
 $app->loader()->setLayoutDirectory(ABSPATH.'/src/Layouts');
 $app->loader()->importConnectionMetadata(ABSPATH.'/src/Configs/Connections.php');
 
-$app->error()->useLogging();
-$app->error()->setErrorCallback(function ()
+$app->error()->handleErrors();
+$app->error()->onError(function ()
 {
 	echo <<<HTML
 		<h1>Exception. Consult the Log.</h1>

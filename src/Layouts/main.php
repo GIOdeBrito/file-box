@@ -14,6 +14,8 @@
 		<title><?= $title ?? 'Unnamed page' ?> | Gio's File Box</title>
 		<!-- Icon: https://img.icons8.com/?size=100&id=rTQzvonsXbHR&format=png&color=000000 -->
 		<link rel="icon" type="image/webp" href="/public/favicon.webp">
+		<?= $Pabilsag->assets->renderStyleSheets() ?>
+		<?= $Pabilsag->assets->renderScripts() ?>
 	</head>
 
 	<body>

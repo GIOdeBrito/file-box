@@ -5,13 +5,15 @@ namespace FileBox\Controllers;
 use Pabilsag\Attributes\Route;
 use Pabilsag\Http\Response;
 use Pabilsag\Database\Database;
+use Pabilsag\Services\AssetManager;
 use FileBox\Middlewares\LoginMiddleware;
 use FileBox\DAO\MonologueDAO;
 
 class HomeController
 {
 	public function __construct (
-		private MonologueDAO $monologueDao
+		private MonologueDAO $monologueDao,
+		private AssetManager $assets
 	) {}
 
 	#[Route(
@@ -59,6 +61,8 @@ class HomeController
 			'list' => $fileStructItemsCollection
 		];
 
+		$this->assets->addStyleSheet("/public/style/page-storage-contents.css", filemtime(ABSPATH."/public/style/page-storage-contents.css"));
+
 		return $res->status(200)->render('StorageList', 'main', $viewData);
 	}
 
@@ -73,6 +77,8 @@ class HomeController
 			'collection' => $this->monologueDao->getAllComments()
 		];
 
+		$this->assets->addStyleSheet("/public/style/page-monologue.css", filemtime(ABSPATH."/public/style/page-monologue.css"));
+
 		return $res->status(200)->render('Monologue', 'main', $viewData);
 	}
 
@@ -85,6 +91,9 @@ class HomeController
 		$viewData = [
 			'title' => 'Put'
 		];
+
+		$this->assets->addScript("/public/src/put_page.js", filemtime(ABSPATH."/public/src/put_page.js"), true);
+		$this->assets->addStyleSheet("/public/style/page-put.css", filemtime(ABSPATH."/public/style/page-put.css"));
 
 		return $res->status(200)->render('Put', 'main', $viewData);
 	}

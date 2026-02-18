@@ -4,8 +4,6 @@
 
 ?>
 
-<script src="/public/src/put_page.js" type="module"></script>
-
 <?php require ABSPATH.'/src/Partials/nav.php' ?>
 
 <main class="box">
@@ -21,19 +19,3 @@
 		<meter data-name="progress-bar">
 	</form>
 </main>
-
-<style>
-
-	form > * {
-		display: block;
-	}
-
-	meter {
-		width: 100%;
-	}
-
-	input[type="file"] {
-		padding: 1rem 0;
-	}
-
-</style>
