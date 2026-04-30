@@ -51,6 +51,7 @@ class HomeController
 			$structFile['path'] = $item;
 			$structFile['mime'] = mime_content_type($item);
 			$structFile['type'] = explode('/', mime_content_type($item))[0];
+			$structFile['creation-date'] = date ("F d Y H:i:s", filemtime($item));
 
 			$fileStructItemsCollection[] = $structFile;
 

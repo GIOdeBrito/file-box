@@ -20,7 +20,7 @@ services:
         tty: true
         profiles: [ "dev" ]
         
-    app-prod:
+    app-release:
         container_name: file-box-app-production
         env_file: .env
         build:
@@ -33,4 +33,4 @@ services:
             - ./storage:/var/www/html/storage
         ports:
             - "${PORT}:80"
-        profiles: [ "prod" ]
+        profiles: [ "release" ]

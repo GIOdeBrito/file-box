@@ -19,4 +19,3 @@ require ABSPATH.'/src/Bootstrap.php';
 
 $app->run();
 
-?>

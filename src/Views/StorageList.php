@@ -4,42 +4,55 @@
 <main class="box">
 	<h1>Content List</h1>
 
-	<ul>
-		<?php
+	<table>
+		<thead>
+			<th>Name</th>
+			<th>Creation Date</th>
+			<th>Mime</th>
+			<th>Actions</th>
+		</thead>
 
-		// List each file as a link
-		foreach($list as $item):
-
-			// Default is package
-			$typeSrc = "https://img.icons8.com/?size=100&id=X3MGpXJOGVKe&format=png&color=000000";
-
-			if($item['type'] === 'image')
-			{
-				$typeSrc = "https://img.icons8.com/?size=100&id=0uIgd8HTuLDw&format=png&color=000000";
-			}
-
-			if($item['type'] === 'text')
-			{
-				$typeSrc = "https://img.icons8.com/?size=100&id=JWpT8cAn8G0V&format=png&color=000000";
-			}
-
-			//var_dump($item);
-
-			?>
-
-			<li>
-				<form action="/api/v1/storage/get" method="POST">
-					<input type="hidden" name="filename" value="<?= $item['name'] ?>">
-
-					<img width="86px" src="<?= $typeSrc ?>" alt="">
-
-					<button class="b-fake-list-item" type="submit"><?= $item['name'] ?></button>
-				</form>
-			</li>
-
+		<tbody>
 			<?php
-		endforeach;
 
-		?>
-	</ul>
+			// https://icons8.com/icons/set/photo--style-office--2000s--technique-filled
+
+			// List each file as a link
+			foreach($list as $item):
+
+				// Default is package
+				$typeSrc = "/public/media/package.webp";
+
+				if($item['type'] === 'image')
+				{
+					$typeSrc = "/public/media/picture.webp";
+				}
+
+				if($item['type'] === 'text')
+				{
+					$typeSrc = "/public/media/text.webp";
+				}
+
+				//var_dump($item);
+
+				?>
+				<tr>
+					<td>
+						<img src="<?= $typeSrc ?>" alt="icon">
+						<?= $item['name'] ?>
+					</td>
+					<td><?= $item['creation-date'] ?></td>
+					<td><?= $item['mime'] ?></td>
+					<td>
+						<form action="/api/v1/storage/get" method="POST">
+							<input type="hidden" name="filename" value="<?= $item['name'] ?>">
+							<button type="submit">Download</button>
+						</form>
+					</td>
+				</tr>
+				<?php
+			endforeach;
+			?>
+		</tbody>
+	</table>
 </main>
